@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avistamiento de Mariposas</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(270deg, #87cefa, #4682b4); /* Degradado animado de azul claro y oscuro */
+            background-size: 400%; /* Tamaño del fondo para la animación */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: 20px auto;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: backgroundAnimation 15s linear infinite; /* Animación de fondo */
+        }
+
+        /* Animación de fondo */
+        @keyframes backgroundAnimation {
+            0% { background-position: 0%; }
+            50% { background-position: 100%; }
+            100% { background-position: 0%; }
+        }
+
+        /* Encabezado */
+        .header {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.7); /* Fondo blanco semi-transparente */
+            overflow: hidden;
+            backdrop-filter: blur(10px); /* Efecto de desenfoque */
+            border-radius: 10px;
+            border: 5px solid transparent; /* Borde transparente para la animación */
+            border-image: linear-gradient(45deg, #ff6347, #ffeb3b, #4caf50, #2196f3, #ff6347) 1; /* Colores del borde */
+            animation: borderAnimation 3s linear infinite; /* Animación del borde */
+        }
+
+        /* Animación del borde */
+        @keyframes borderAnimation {
+            0% { border-image-source: linear-gradient(45deg, #ff6347, #ffeb3b, #4caf50, #2196f3, #ff6347); }
+            100% { border-image-source: linear-gradient(405deg, #ff6347, #ffeb3b, #4caf50, #2196f3, #ff6347); }
+        }
+
+        /* Logo grande de fondo */
+        .logo-container {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            opacity: 0.2;
+            animation: pulse 5s infinite alternate;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Animación de pulsación suave */
+        @keyframes pulse {
+            from { transform: scale(1); opacity: 0.2; }
+            to { transform: scale(1.1); opacity: 0.3; }
+        }
+
+        /* Título encima del logo */
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin: 0;
+            z-index: 1;
+            animation: fadeIn 2s ease-out;
+            background: linear-gradient(90deg, #ff6347, #ff1493, #d2691e, #4b0082, #ff6347);
+            background-size: 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: colorChange 4s linear infinite;
+        }
+
+        /* Animación de cambio de color LED */
+        @keyframes colorChange {
+            0% { background-position: 0%; }
+            100% { background-position: 100%; }
+        }
+
+        /* Contenedor de la galería */
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px; /* Espacio entre tarjetas */
+            max-width: 1200px;
+            padding: 20px;
+            animation: fadeIn 2s ease-in-out;
+            height: auto; /* Ajustar a las tarjetas */
+            overflow-y: auto; /* Habilitar el desplazamiento vertical */
+        }
+
+        /* Estilos para cada tarjeta de mariposa */
+        .card {
+            background-color: #ffffff; /* Color blanco para tarjetas */
+            width: 280px; /* Ampliar el ancho de las tarjetas */
+            padding: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border-radius: 15px; /* Borde más redondeado */
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición de sombra */
+            border: 5px solid; /* Bordes en un solo color */
+            border-image-slice: 1;
+            animation: borderAnimation 3s linear infinite; /* Animación del borde */
+        }
+
+        /* Animación del borde */
+        @keyframes borderAnimation {
+            0% { border-image-source: linear-gradient(45deg, #ff6347, #ffeb3b, #4caf50, #2196f3, #ff6347); }
+            100% { border-image-source: linear-gradient(405deg, #ff6347, #ffeb3b, #4caf50, #2196f3, #ff6347); }
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Aumentar la sombra en hover */
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 15px 15px 0 0; /* Esquinas superiores redondeadas */
+            animation: zoomIn 1s ease forwards;
+        }
+
+        /* Animación para las imágenes */
+        @keyframes zoomIn {
+            0% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
+
+        .info {
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .info h2 {
+            color: #ffffff; /* Color del texto en tarjetas */
+            font-size: 1.5em; /* Aumentar el tamaño del texto */
+            margin: 10px 0;
+            animation: titleAnimation 3s linear infinite; /* Animación para el título */
+            text-shadow: 0 0 20px #ff6347, 0 0 30px #ff6347; /* Efecto de resplandor mejorado */
+            border: 2px solid #ff6347; /* Contorno */
+            padding: 5px; /* Espaciado interno */
+            border-radius: 5px; /* Esquinas redondeadas para el contorno */
+        }
+
+        /* Animación para el título de las mariposas */
+        @keyframes titleAnimation {
+            0% { text-shadow: 0 0 10px #ff6347, 0 0 20px #ff6347; }
+            50% { text-shadow: 0 0 20px #ffeb3b, 0 0 30px #ffeb3b; }
+            100% { text-shadow: 0 0 10px #ff6347, 0 0 20px #ff6347; }
+        }
+
+        .info p {
+            color: #555; /* Color del texto en tarjetas */
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado con logo grande y título -->
+    <div class="header">
+        <div class="logo-container">
+            <img src="escudo.png" alt="Logo del Colegio">
+        </div>
+        <h1>Alas de Color: La Belleza en la Naturaleza</h1>
+    </div>
+
+    <div class="gallery-container">
+        <!-- Tarjetas de mariposas -->
+        <div class="card">
+            <img src="9.jpeg"width="250">
+            <div class="info">
+                <h2>NOMBRE</h2>
+                <p>Especie: <span>?</span></p>
+                <p>Descripción: <span>?.</span></p>
+                <p>Región: <span>?</span></p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="8.jpeg"width="250">
+            <div class="info">
+                <h2>NOMBRE</h2>
+                <p>Especie: <span>?</span></p>
+                <p>Descripción: <span>?.</span></p>
+                <p>Región: <span>?</span></p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="7.jpeg"width="250">
+            <div class="info">
+                <h2>NOMBRE</h2>
+                <p>Especie: <span>?</span></p>
+                <p>Descripción: <span>?.</span></p>
+                <p>Región: <span>?</span></p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="6.jpeg"width="250">
+            <div class="info">
+                <h2>NOMBRE</h2>
+                <p>Especie: <span>?</span></p>
+                <p>Descripción: <span>?.</span></p>
+                <p>Región: <span>?</span></p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="5.jpeg"width="250">
+            <div class="info">
+                <h2>NOMBRE</h2>
+                <p>Especie: <span>?</span></p>
+                <p>Descripción: <span>?.</span></p>
+                <p>Región: <span>?</span></p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="4.jpeg"width="250">
+            <div class="info">
+                <h2>NOMBRE</h2>
+                <p>Especie: <span>?</span></p>
+                <p>Descripción: <span>?.</span></p>
+                <p>Región: <span>?</span></p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="3.jpeg"width="250">
+            <div class="info">
+                <h2>NOMBRE</h2>
+                <p>Especie: <span>?</span></p>
+                <p>Descripción: <span>?.</span></p>
+                <p>Región: <span>?</span></p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="2.jpeg"width="250">
+            <div class="info">
+                <h2>NOMBRE</h2>
+                <p>Especie: <span>?</span></p>
+                <p>Descripción: <span>?.</span></p>
+                <p>Región: <span>?</span></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
